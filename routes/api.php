@@ -1,7 +1,10 @@
+
 <?php
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ObsController;
+use App\Http\Controllers\SensorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +20,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+// Route::put('sensor/',[SensorController::class, 'create']);
+
+Route::post('/obsdatas', [ObsController::class, 'store']);
+Route::get('/obsdatas',[ObsController::class,'index']);
+
+Route::post('/sensors',[SensorController::class, 'store']);
