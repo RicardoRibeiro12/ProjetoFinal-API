@@ -41,4 +41,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function gateways(): HasMany
+    {
+        return $this->hasMany(Gateway::class,'id_user','id');
+    }
+
+    public function Culturas(): HasMany
+    {
+        return $this->hasMany(Cultura::class,'id_user','id');
+    }
+    
 }

@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('sensors', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->unsignedBigInteger('id_controlador');
+            $table->string('type');
+            $table->string('port');
+            $table->string('descricao');
             $table->timestamps();
+            
+
+            $table->foreign('id_controlador')->references('id')->on('controladores');
         });
     }
 
@@ -27,10 +29,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('sensors');
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
-        
+     
     }
 };
