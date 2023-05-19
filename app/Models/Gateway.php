@@ -9,15 +9,12 @@ class Gateway extends Model
 {
     use HasFactory;
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+
 
 
     public function controladores(): HasMany
     {
-        return $this->hasMany(Controlador::class,'id_gateway','id');
+        return $this->hasMany(Controladore::class,'id_gateway','id');
     }
 
 }

@@ -1,0 +1,52 @@
+.login {
+  min-height: 100vh;
+}
+
+.bg-image {
+  background-color: #528364;
+  background-image: url('../../public/images/fundo.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+  background-color: #528364;
+  color: #fff;
+}
+.btn-login:hover {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+  background-color: #fff;
+  color: #528364;
+  border: 2px solid #528364;
+
+}
+
+@media (max-width: 767px) {
+  body {
+    overflow: hidden;
+  }
+  .bg-smart {
+    background-color: #B9CDC1;
+  }
+  .nav-logo {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    background-image: url("../../public/images/logo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .col-md-8.col-lg-6 {
+    margin: 0 auto;
+    /*margin-top: 120px;*/
+  }
+}

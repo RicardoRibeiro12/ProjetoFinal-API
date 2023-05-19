@@ -33,7 +33,7 @@ class ObsController extends Controller
     public function store(Request $request)
     {
         $obs = new ObsData;
-        //$obs->id_sensor = $request->id_sensor;
+        $obs->id_sensor = $request->id_sensor;
         $obs->valor= $request->valor;
         $obs->unidade_medida= $request->unidade_medida;
         $obs->save();

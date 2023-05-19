@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\CulturaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +17,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+
+
+Route::get('/culturas', [CulturaController::class,'index']);
+
+Route::get('/sensores_atuadores/{id}', [CulturaController::class,'get_sensores_atuadores']);
+
+Route::get('/regras', function () {
+    return view('regras');
 });

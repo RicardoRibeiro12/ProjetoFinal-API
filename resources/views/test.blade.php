@@ -4,6 +4,7 @@
     <title>Smartfarm</title>
 </head>
 <body>
+    <button type="button" class="btn btn-primary">Ligar</button>
     <h1>DHT11</h1>
     <ul>
         @foreach ($listobs as $obs)

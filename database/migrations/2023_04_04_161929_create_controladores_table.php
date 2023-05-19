@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('type');
             $table->ipAddress('Ip');
+            $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_gateway');
             $table->timestamps();
-
+            
+            $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_gateway')->references('id')->on('gateways');
         });
     }

@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('obs_data', function (Blueprint $table) {
             $table->id();
-            //$table->unsignedBigInteger('id_sensor');
+            $table->unsignedBigInteger('id_sensor');
             $table->float('valor');
             $table->string('unidade_medida');
             $table->timestamps();
 
-            //$table->foreign('id_sensor')->references('id')->on('sensors');
+            $table->foreign('id_sensor')->references('id')->on('sensors');
         });
     }
 

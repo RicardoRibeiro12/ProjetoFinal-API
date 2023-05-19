@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('gateways', function (Blueprint $table) {
             $table->id();
             $table->ipAddress('Ip');
-            $table->unsignedBigInteger('id_user');
             $table->timestamps();
 
-            $table->foreign('id_user')->references('id')->on('users');
+            
         });
     }
 

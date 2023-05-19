@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sensor;
+use App\Models\Atuadore;
 use Illuminate\Http\Request;
 
-class SensorController extends Controller
+class AtuadorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,14 +28,14 @@ class SensorController extends Controller
      */
     public function store(Request $request)
     {
-        $sensor = new Sensor;
+        $atuador = new Atuadore;
    
 
-        $sensor->type = $request->type;
-        $sensor->id_controlador = $request->id_controlador;
-        $sensor->port= $request->port;
-        $sensor->descricao= $request->descricao;
-        $sensor->save();
+        $atuador->type = $request->type;
+        $atuador->id_controlador = $request->id_controlador;
+        $atuador->port= $request->port;
+        $atuador->descricao= $request->descricao;
+        $atuador->save();
         
         
         //sensor->Culturas()->attach($request->culturas);
@@ -43,10 +43,11 @@ class SensorController extends Controller
         var_dump('sucesso');
     }
 
+
     /**
      * Display the specified resource.
      */
-    public function show(Sensor $sensor)
+    public function show(string $id)
     {
         //
     }
@@ -54,7 +55,7 @@ class SensorController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Sensor $sensor)
+    public function edit(string $id)
     {
         //
     }
@@ -62,7 +63,7 @@ class SensorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Sensor $sensor)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -70,7 +71,7 @@ class SensorController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Sensor $sensor)
+    public function destroy(string $id)
     {
         //
     }

@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Atuador extends Model
+class Atuadore extends Model
 {
     use HasFactory;
 
 
     public function controlador()
     {
-        return $this->belongsTo(Controlador::class);
+        return $this->belongsTo(Controladore::class);
     }
 
     public function Culturas()

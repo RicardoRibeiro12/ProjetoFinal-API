@@ -42,11 +42,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
-    public function gateways(): HasMany
+    
+    public function controladores(): HasMany
     {
-        return $this->hasMany(Gateway::class,'id_user','id');
+        return $this->hasMany(Controlador::class,'id_gateway','id');
     }
+
 
     public function Culturas(): HasMany
     {

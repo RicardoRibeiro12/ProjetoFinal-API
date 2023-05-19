@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Controlador extends Model
+class Controladore extends Model
 {
     use HasFactory;
 
@@ -14,6 +14,10 @@ class Controlador extends Model
         return $this->belongsTo(Gateway::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     
     public function atuadores(): HasMany
     {

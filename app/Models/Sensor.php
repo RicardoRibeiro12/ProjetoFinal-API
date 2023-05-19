@@ -11,7 +11,7 @@ class Sensor extends Model
     
     public function controlador()
     {
-        return $this->belongsTo(Controlador::class);
+        return $this->belongsTo(Controladore::class);
     }
 
 
