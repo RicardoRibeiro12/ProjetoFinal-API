@@ -17,6 +17,23 @@
  
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Minha Nav Bar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" onclick="window.location.href='/culturas'">Culturas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="window.location.href='/controladores'">Controladores</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="bg-container"></div>
             <div class="container">
                 <div class="row mt-5 justify-content-center">
@@ -37,7 +54,7 @@
                 @endforeach
                 </div>
                 <div class="fixed-bottom">
-                    <button class="btn btn-lg btn-Addcultura text-uppercase fw-bold mb-5 float-end" type="submit">+ Adicionar
+                    <button class="btn btn-lg btn-Addcultura text-uppercase fw-bold mb-5 float-end" type="submit" onclick="window.location.href='addcultura'">+ Adicionar
                         Cultura</button>
                 </div>
             </div>

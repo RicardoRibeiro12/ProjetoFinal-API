@@ -2,7 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ObsController;
+use App\Http\Controllers\SensorController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AtuadorController;
+use App\Http\Controllers\GatewayController;
 use App\Http\Controllers\CulturaController;
+use App\Http\Controllers\ControladorController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +22,7 @@ use App\Http\Controllers\CulturaController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [CulturaController::class,'index']);
 
 Route::get('/login', function () {
     return view('login');
@@ -32,3 +37,9 @@ Route::get('/sensores_atuadores/{id}', [CulturaController::class,'get_sensores_a
 Route::get('/regras', function () {
     return view('regras');
 });
+
+Route::get('/addcultura', function () {
+    return view('addcultura');
+});
+
+Route::post('cultura', [CulturaController::class, 'store']);

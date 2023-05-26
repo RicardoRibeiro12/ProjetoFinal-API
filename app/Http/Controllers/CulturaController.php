@@ -40,6 +40,8 @@ class CulturaController extends Controller
         $cultura->longitude = $request->longitude;
         $cultura->id_user = $request->id_user;
         $cultura->save();
+
+        return redirect('culturas');
         
         var_dump('sucesso');
     }
