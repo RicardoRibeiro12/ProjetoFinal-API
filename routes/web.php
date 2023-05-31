@@ -58,6 +58,14 @@ Route::get('/regras', function () {
 Route::get('/addcultura', function () {
     return view('addcultura');
 });
+Route::get('/addsensores', function () {
+    return view('addsensores');
+})->name('addsensores');
+
+Route::get('/addatuadores', function () {
+    return view('addatuador');
+})->name('addatuadores');
+
 
 Route::post('cultura', [CulturaController::class, 'store']);
 
