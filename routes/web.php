@@ -22,11 +22,28 @@ use App\Http\Controllers\ControladorController;
 |
 */
 
-Route::get('/', [CulturaController::class,'index']);
+Route::get('/', function () {
+    if (Auth::check()) {
+        return redirect()->route('home');
+    } else {
+        return view('auth.login');
+    }
+})->name('root');
 
+Route::get('/', [CulturaController::class,'index'])->name('home')->middleware('auth');
+
+/*
+Route::get('/home', function () {
+    return view('culturas.index');
+})->name('home')->middleware('auth');
+*/
+
+
+/*
 Route::get('/login', function () {
     return view('login');
-});
+});*/
+
 
 
 
@@ -43,3 +60,6 @@ Route::get('/addcultura', function () {
 });
 
 Route::post('cultura', [CulturaController::class, 'store']);
+
+Auth::routes();
+

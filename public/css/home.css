@@ -38,16 +38,21 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background-image: url('/images/fundo.jpg');
-    filter: blur(3px);
+    background-image: url('../img/fundo.jpg');
+    filter: blur(2px);
     z-index: -1;
     background-size: cover;
   background-repeat: no-repeat;
+  padding: 0;
   }
   
   .container {
     position: relative;
   }
+  .no-horizontal-margin {
+    margin-right: 0;
+    margin-left: 0;
+}
   @media (max-width: 768px) {
     .btn-cultura {
       font-size: 0.7rem;
@@ -58,4 +63,3 @@
       padding: 0.5rem 0.75rem;
     }
   }
-  

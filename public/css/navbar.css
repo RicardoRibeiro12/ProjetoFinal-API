@@ -1,0 +1,16 @@
+.navbar-color {
+    background-color: #528364;
+}
+
+.navbar-page-title {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 8px;
+}
+.navbar-page-title:hover {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 8px;
+}
