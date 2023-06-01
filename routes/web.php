@@ -49,11 +49,13 @@ Route::get('/login', function () {
 
 Route::get('/culturas', [CulturaController::class,'index']);
 
+//Controlador
+Route::post('/controlador', [ControladorController::class, 'store'])->name('createcontrolador');
+
 Route::get('/sensores_atuadores/{id}', [CulturaController::class,'get_sensores_atuadores']);
 
-Route::get('/regras', function () {
-    return view('regras');
-});
+
+Route::get('/regras', [RegrasController::class,'index'])->name('regras');
 
 Route::get('/addcultura', function () {
     return view('addcultura');

@@ -42,8 +42,7 @@ Route::post('/user', [UserController::class, 'store']);
 // Gateway
 Route::post('/gateway', [GatewayController::class, 'store']);
 
-//Controlador
-Route::post('/controlador', [ControladorController::class, 'store']);
+
 
 //Cultura
 Route::post('cultura', [CulturaController::class, 'store']);
