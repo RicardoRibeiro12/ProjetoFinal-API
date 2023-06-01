@@ -34,7 +34,7 @@
     <div class="row no-horizontal-margin">
         <div class="col-sm text-center">
             <button class="btn btn-lg btn-cultura text-uppercase fw-bold mb-2" type="submit"
-                onclick="window.location.href='sensores.html'">Voltar</button>
+                onclick="window.location.href='{{ route('home') }}'">Voltar</button>
         </div>
         <div class="col-sm text-center">
         </div>
@@ -42,4 +42,4 @@
             
         </div>
     </div>
-    @endsection
+@endsection

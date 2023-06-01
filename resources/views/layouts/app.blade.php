@@ -14,6 +14,10 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
@@ -46,10 +50,10 @@
                             <a class="navbar-page-title" href="{{ route('home') }}">{{ __('Home') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navbar-page-title" href="#">{{ __('Controladores') }}</a>
+                            <a class="navbar-page-title" href="{{ route('controladores') }}">{{ __('Controladores') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navbar-page-title" href="#">{{ __('Regras') }}</a>
+                            <a class="navbar-page-title" href="{{ route('regras') }}">{{ __('Regras') }}</a>
                         </li>
                         @endguest
                     </ul>

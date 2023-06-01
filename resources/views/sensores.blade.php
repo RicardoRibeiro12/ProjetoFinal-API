@@ -9,14 +9,14 @@
             <div class="row">
                 <div class="col-sm text-center">
                     <button class="btn btn-lg btn-cultura text-uppercase fw-bold mb-2" type="submit"
-                    onclick="window.location.href='{{ route('addsensores') }}'">Adicionar Sensor</button>
+                    onclick="window.location.href='{{ route('associarsensor') }}'">Associar Sensor</button>
                 </div>
                 <div class="col-sm text-center">
                     
                 </div>
                 <div class="col-sm text-center">
                     <button class="btn btn-lg btn-cultura text-uppercase fw-bold mb-2" type="submit"
-                        onclick="window.location.href='{{ route('addatuadores') }}'">Adicionar Atuador</button>
+                        onclick="window.location.href='{{ route('associaratuador') }}'">Associar Atuador</button>
                 </div>
             </div>
             @else
@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-sm text-center">
                     <button class="btn btn-lg btn-cultura text-uppercase fw-bold mb-2" type="submit"
-                    onclick="window.location.href='{{ route('addsensores') }}'">Adicionar Sensor</button>
+                    onclick="window.location.href='{{ route('associarsensor') }}'">Associar Sensor</button>
                 </div>
                 <div class="col-sm text-center">
                 </div>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="col-sm text-center">
                         <button class="btn btn-lg btn-cultura text-uppercase fw-bold mb-2" type="submit"
-                        onclick="window.location.href='{{ route('addatuadores') }}'">Adicionar Atuador</button>
+                        onclick="window.location.href='{{ route('associaratuador') }}'">Associar Atuador</button>
                     </div>
                     <div class="col-sm text-center">
                     </div>
@@ -80,7 +80,7 @@
                 @if(count($lista_sensores) == 0)
                 @else
                 <button class="btn btn-lg btn-cultura text-uppercase fw-bold mb-2" type="submit"
-                    onclick="window.location.href='{{ route('addsensores') }}'">Adicionar Sensor</button>
+                    onclick="window.location.href='{{ route('associarsensor') }}'">Associar Sensor</button>
                 @endif
             </div>
             <div class="col-sm text-center">
@@ -90,7 +90,7 @@
                 @if(count($lista_atuadores) == 0)
                 @else
                 <button class="btn btn-lg btn-cultura text-uppercase fw-bold mb-2" type="submit"
-                        onclick="window.location.href='{{ route('addatuadores') }}'">Adicionar Atuador</button>
+                        onclick="window.location.href='{{ route('associaratuador') }}'">Associar Atuador</button>
                     @endif
 
             </div>
