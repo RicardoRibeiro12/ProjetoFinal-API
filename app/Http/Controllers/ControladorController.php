@@ -37,7 +37,8 @@ class ControladorController extends Controller
 
         $controlador->save();
         
-        var_dump('sucesso');
+        //var_dump('sucesso');
+        return redirect('controladores');
     }
 
 
