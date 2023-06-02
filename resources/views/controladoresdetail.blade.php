@@ -20,12 +20,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr onclick="window.location.href='{{ route('logsSensor') }}'">
-                                <td>1</td>
-                                <td>Type 1</td>
-                                <td>DHT11</td>
-                                <td>Temperatura Estufa 1</td>
+                            @foreach ($listasensores as $sensor) 
+                            <tr onclick="window.location.href='{{ route('logsSensor', [ 'id_sensor' =>  $sensor->id ]) }}'">
+                                <td>{{ $sensor->id}}</td>
+                                <td>{{$sensor->id_controlador}}</td>
+                                <td>{{$sensor->type}}</td>
+                                <td>{{$sensor->descricao}}</td>
                             </tr>
+                            @endforeach
                             <!-- Adicione mais linhas conforme necessário -->
                         </tbody>
                     </table>
@@ -44,12 +46,14 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($listaatuadores as $atuador)
                             <tr onclick="window.location.href='{{ route('logsAtuador') }}'">
-                                <td>2</td>
-                                <td>Type 2</td>
-                                <td>Rele</td>
-                                <td>Acender Luz</td>
+                                <td>{{ $atuador->id}}</td>
+                                <td>{{$atuador->id_controlador}}</td>
+                                <td>{{$controlador->type}}</td>
+                                <td>{{$controlador->descricao}}</td>
                             </tr>
+                            @endforeach
                             <!-- Adicione mais linhas conforme necessário -->
                         </tbody>
                     </table>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Controladore;
+use App\Models\Sensor;
+use App\Models\Atuadore;
 use Illuminate\Http\Request;
 
 class ControladorController extends Controller
@@ -74,5 +76,18 @@ class ControladorController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    // return the lists of sensores and atuadores from a specific controlador 
+    public function sensores_atuadores(string $id){
+            $sensor = new Sensor;
+            $atuador = new Atuadore;
+
+            $listasensores = $sensor::where('id_controlador',$id)->get();
+            $listaatuadores = $atuador::where('id_controlador',$id)->get();
+
+            
+            return view('controladoresdetail', ['listasensores'=> $listasensores,'listaatuadores'=> $listaatuadores]);
+
     }
 }

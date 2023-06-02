@@ -14,16 +14,13 @@
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach ($listalogs as $log)
                   <tr>
-                    <td>20</td>
-                    <td>ºC</td>
-                    <td>25/05/2023 00:58:28</td>
+                    <td>{{$log->valor}}</td>
+                    <td>{{$log->unidade_medida}}</td>
+                    <td>{{$log->created_at}}</td>
                   </tr>
-                  <tr>
-                    <td>27</td>
-                    <td>ºC</td>
-                    <td>25/05/2023 01:58:28</td>
-                  </tr>
+                  @endforeach
                   <!-- Adicione mais linhas conforme necessário -->
                 </tbody>
               </table>

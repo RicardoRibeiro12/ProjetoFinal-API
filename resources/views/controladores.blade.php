@@ -16,7 +16,7 @@
                 </thead>
                 <tbody>
                 @foreach ($listacontroladores as $controlador) 
-                  <tr onclick="window.location.href='{{ route('controladoresdetail') }}'">
+                  <tr onclick="window.location.href='{{ route('controladoresdetail', [ 'id_controlador' =>  $controlador->id ]) }}'">
                   
                     <td>{{$controlador->id}}</td>
                     <td>{{$controlador->type}}</td>

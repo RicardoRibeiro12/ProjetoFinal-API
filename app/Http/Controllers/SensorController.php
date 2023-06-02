@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sensor;
+use App\Models\ObsData;
 use Illuminate\Http\Request;
 
 class SensorController extends Controller
@@ -73,5 +74,13 @@ class SensorController extends Controller
     public function destroy(Sensor $sensor)
     {
         //
+    }
+
+    public function sensor_logs(string $id){
+        $obsdata = new ObsData;
+
+        $listalogs = $obsdata::where('id_sensor',$id)->get();
+
+        return view('logsSensor', ['listalogs'=> $listalogs]);
     }
 }

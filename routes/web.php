@@ -56,6 +56,9 @@ Route::get('/sensores_atuadores/{id}', [CulturaController::class,'get_sensores_a
 
 Route::get('/controladores/{id_user}', [ControladorController::class,'index'])->name('controladores');
 
+Route::get('/controladoresdetail/{id_controlador}', [ControladorController::class,'sensores_atuadores'])->name('controladoresdetail');
+
+Route::get('/logsSensor/{id_sensor}', [SensorController::class,'sensor_logs'])->name('logsSensor');
 
 Route::get('/regras', [RegrasController::class,'index'])->name('regras');
 
@@ -78,10 +81,9 @@ Route::get('/addControlador', function () {
     return view('addControlador');
 })->name('addControlador');
 
-Route::get('/controladoresdetail', function () {
+/*Route::get('/controladoresdetail', function () {
     return view('controladoresdetail');
-})->name('controladoresdetail');
-
+})->name('controladoresdetail');*/
 Route::get('/regras', function () {
     return view('regras');
 })->name('regras');
@@ -111,10 +113,10 @@ Route::get('/associarsensor', function () {
     return view('associarSensor');
 })->name('associarsensor');
 
-Route::get('/logsSensor', function () {
+/*Route::get('/logsSensor', function () {
     return view('logsSensor');
 })->name('logsSensor');
-
+*/
 Route::get('/logsAtuador', function () {
     return view('logsAtuador');
 })->name('logsAtuador');
