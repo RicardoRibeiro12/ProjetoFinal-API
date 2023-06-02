@@ -6,7 +6,7 @@
         <h1>Formulário de Culturas</h1>
         <form action="{{url('cultura')}}" method="post">
             @csrf
-            <input type="hidden" name="id_user" value="{{ Auth::user()->id }}}" class="d-none">
+            <input type="hidden" name="id_user" value="{{ Auth::user()->id }}" class="d-none">
 
             <div class="form-group row mt-3 no-horizontal-margin">
                 <label for="descricao" class="col-sm-2 col-form-label">Descrição:</label>

@@ -54,6 +54,8 @@ Route::post('/controlador', [ControladorController::class, 'store'])->name('crea
 
 Route::get('/sensores_atuadores/{id}', [CulturaController::class,'get_sensores_atuadores']);
 
+Route::get('/controladores/{id_user}', [ControladorController::class,'index'])->name('controladores');
+
 
 Route::get('/regras', [RegrasController::class,'index'])->name('regras');
 
@@ -68,10 +70,10 @@ Route::get('/addatuadores', function () {
     return view('addatuador');
 })->name('addatuadores');
 
-Route::get('/controladores', function () {
+/*Route::get('/controladores', function () {
     return view('controladores');
 })->name('controladores');
-
+*/
 Route::get('/addControlador', function () {
     return view('addControlador');
 })->name('addControlador');

@@ -8,26 +8,28 @@
                 <thead class="table-dark">
                   <tr>
                     <th>ID</th>
-                    <th>Descrição</th>
                     <th>Type</th>
                     <th>IP</th>
-                    <th>IP Gateway</th>
+                    <th>Id gateway</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
+                @foreach ($listacontroladores as $controlador) 
                   <tr onclick="window.location.href='{{ route('controladoresdetail') }}'">
-                    <td>1</td>
-                    <td>ESP Tomates</td>
-                    <td>Type 1</td>
-                    <td>192.168.1.1</td>
-                    <td>192.168.1.254</td>
+                  
+                    <td>{{$controlador->id}}</td>
+                    <td>{{$controlador->type}}</td>
+                    <td>{{$controlador->Ip}}</td>
+                    <td>{{$controlador->id_gateway}}</td>
                     <td>
                       <button class="btn btn-warning btn-sm" title="Editar">Editar</button>
                       <button class="btn btn-danger btn-sm" title="Excluir">Eliminar</button>
                     </td>
+                  
 
                   </tr>
+                  @endforeach
                 </tbody>
               </table>
         </div>

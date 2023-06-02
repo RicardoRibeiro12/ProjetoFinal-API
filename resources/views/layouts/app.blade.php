@@ -50,7 +50,7 @@
                             <a class="navbar-page-title" href="{{ route('home') }}">{{ __('Home') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="navbar-page-title" href="{{ route('controladores') }}">{{ __('Controladores') }}</a>
+                            <a class="navbar-page-title" href="{{ route('controladores', ['id_user' => Auth::id()]) }}">{{ __('Controladores') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="navbar-page-title" href="{{ route('regras') }}">{{ __('Regras') }}</a>

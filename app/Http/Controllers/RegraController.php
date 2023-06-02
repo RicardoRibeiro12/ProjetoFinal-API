@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sensor;
 use Illuminate\Http\Request;
 
-class SensorController extends Controller
+class RegraController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $cultura = new Regra;
+        $listaculturas = $cultura::all();
+
+        return view('culturas', ['listaculturas'=> $listaculturas]);
     }
 
     /**
@@ -22,31 +24,19 @@ class SensorController extends Controller
     {
         //
     }
-        
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        $sensor = new Sensor;
-   
-
-        $sensor->type = $request->type;
-        $sensor->id_controlador = $request->id_controlador;
-        $sensor->port= $request->port;
-        $sensor->descricao= $request->descricao;
-        $sensor->save();
-        
-        
-        //sensor->Culturas()->attach($request->culturas);
-        
-        var_dump('sucesso');
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Sensor $sensor)
+    public function show(string $id)
     {
         //
     }
@@ -54,7 +44,7 @@ class SensorController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Sensor $sensor)
+    public function edit(string $id)
     {
         //
     }
@@ -62,7 +52,7 @@ class SensorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Sensor $sensor)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -70,7 +60,7 @@ class SensorController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Sensor $sensor)
+    public function destroy(string $id)
     {
         //
     }

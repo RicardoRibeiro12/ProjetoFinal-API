@@ -10,9 +10,12 @@ class ControladorController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(string $id)
     {
-        //
+        $controlador = new Controladore;
+        $listacontroladores = $controlador::where('id_user',$id)->get();
+
+        return view('controladores', ['listacontroladores'=> $listacontroladores]);
     }
 
     /**
@@ -37,8 +40,7 @@ class ControladorController extends Controller
 
         $controlador->save();
         
-        //var_dump('sucesso');
-        return redirect('controladores');
+        var_dump('sucesso');
     }
 
 
