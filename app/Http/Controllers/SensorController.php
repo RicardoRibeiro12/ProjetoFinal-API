@@ -19,9 +19,10 @@ class SensorController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create( string $id)
     {
-        //
+        
+        return view ('addsensores',['controlador_id' => $id ]);
     }
         
     /**
@@ -30,18 +31,16 @@ class SensorController extends Controller
     public function store(Request $request)
     {
         $sensor = new Sensor;
-   
-
+        
+        
+        return var_dump ($request->type);
         $sensor->type = $request->type;
         $sensor->id_controlador = $request->id_controlador;
-        $sensor->port= $request->port;
+        $sensor->port= 1;
         $sensor->descricao= $request->descricao;
         $sensor->save();
         
-        
-        //sensor->Culturas()->attach($request->culturas);
-        
-        var_dump('sucesso');
+        return redirect()->route('controladoresdetail', [ 'id_controlador' =>  $request->id_controlador ]);
     }
 
     /**

@@ -4,27 +4,28 @@
     <div class="bg-container"></div>
     <div class="container">
         <h2 class="mt-5">Adicionar Sensor</h2>
-    <form>
+    <form action="{{url('sensor')}}" method="post">
+      @csrf
       <div class="form-group mt-3">
         <label for="sensor">Tipo de Sensor:</label>
-        <select id="sensor" class="form-control" name="sensor">
-          <option value="sensor1">Sensor 1</option>
-          <option value="sensor2">Sensor 2</option>
-          <option value="sensor3">Sensor 3</option>
+        <select id="sensor" class="form-control" name="type">
+          <option value="DHT11">DHT11</option>
+          <option value="LDR">LDR</option>
+          <option value="Sensor Nivel">Sensor nivel</option>
           <!-- Adicione mais opções de sensor conforme necessário -->
         </select>
       </div>
 
       <div class="form-group mt-3">
         <label for="atuador">Controlador Associado:</label>
-        <input type="text" class="form-control" id="atuador" name="atuador" readonly value="Controlador 1">
+        <input type="text" class="form-control" id="atuador" name="id_controlador" readonly value="{{$controlador_id}}">
       </div>
 
-      <div class="form-group mt-3">
+    <!--  <div class="form-group mt-3">
         <label for="porta">Porta Ligada:</label>
         <input type="text" class="form-control" id="porta" name="porta">
       </div>
-
+    -->
       <div class="form-group mt-3">
         <label for="descricao">Descrição:</label>
         <textarea class="form-control" id="descricao" name="descricao"></textarea>

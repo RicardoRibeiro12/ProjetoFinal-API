@@ -4,17 +4,18 @@
 <div class="bg-container"></div>
     <div class="container">
         <h2 class="mt-5">Formulário de Regra</h1>
-        <form>
+        <form action="{{url('regra')}}" method="post">
+            @csrf
             <div class="form-group row no-horizontal-margin mt-3">
-                <label for="nome" class="col-sm-2 col-form-label">Nome:</label>
+                <label for="nome" class="col-sm-2 col-form-label" >Nome:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nome" placeholder="Digite o Nome da Regra">
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite o Nome da Regra">
                 </div>
             </div>
             <div class="form-group row no-horizontal-margin mt-3">
-                <label for="descricao" class="col-sm-2 col-form-label">Descrição:</label>
+                <label for="descricao" class="col-sm-2 col-form-label" >Descrição:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="descricao" placeholder="Digite a descrição da Regra">
+                    <input type="text" class="form-control" id="descricao"  name="descricao" placeholder="Digite a descrição da Regra">
                 </div>
             </div>
             <div class="form-group row no-horizontal-margin mt-3">

@@ -13,13 +13,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                <tr>
                     <td>Ligou</td>
-                    <td>25/05/2023 00:58:28</td>
-                  </tr>
-                  <tr>
-                    <td>Desligou</td>
-                    <td>25/05/2023 01:58:28</td>
                   </tr>
                 </tbody>
               </table>

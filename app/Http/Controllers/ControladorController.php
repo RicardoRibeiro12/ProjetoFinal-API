@@ -83,11 +83,15 @@ class ControladorController extends Controller
             $sensor = new Sensor;
             $atuador = new Atuadore;
 
+        
+
+
             $listasensores = $sensor::where('id_controlador',$id)->get();
             $listaatuadores = $atuador::where('id_controlador',$id)->get();
 
             
-            return view('controladoresdetail', ['listasensores'=> $listasensores,'listaatuadores'=> $listaatuadores]);
+            
+            return view('controladoresdetail', ['listasensores'=> $listasensores,'listaatuadores'=> $listaatuadores, 'id_controlador'=>$id]);
 
     }
 }

@@ -14,21 +14,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr onclick="window.location.href='{{ route('regradetail') }}'">
-              <td>1</td>
-              <td>Regra 1</td>
-              <td>Descrição da Regra 1</td>
+          
+            @foreach ($listaregras as $regra)
+            <tr onclick="window.location.href='{{ route('regradetail', [ 'id_regra' =>  $regra->id ]) }}'">
+              <td>{{$regra->id}}</td>
+              <td>{{$regra->nome}}</td>
+              <td>{{$regra->descricao}}</td>
             </tr>
-            <tr>
-              <td>2</td>
-              <td>Regra 2</td>
-              <td>Descrição da Regra 2</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Regra 3</td>
-              <td>Descrição da Regra 3</td>
-            </tr>
+            @endforeach
           </tbody>
         </table>
       </div>

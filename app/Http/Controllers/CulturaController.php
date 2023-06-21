@@ -43,7 +43,7 @@ class CulturaController extends Controller
 
         return redirect('culturas');
         
-        var_dump('sucesso');
+       
     }
     /**
      * Display the specified resource.

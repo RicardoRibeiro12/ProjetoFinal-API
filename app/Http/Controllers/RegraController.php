@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Regra;
+use App\Models\Condition;
+use App\Models\Raction;
 
 class RegraController extends Controller
 {
@@ -11,10 +14,10 @@ class RegraController extends Controller
      */
     public function index()
     {
-        $cultura = new Regra;
-        $listaculturas = $cultura::all();
+        $regra = new Regra;
+        $listaregras = $regra::all();
 
-        return view('culturas', ['listaculturas'=> $listaculturas]);
+        return view('regras', ['listaregras'=> $listaregras]);
     }
 
     /**
@@ -30,7 +33,17 @@ class RegraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $regra = new Regra;
+
+
+        $regra->nome = $request->nome;
+        $regra->descricao= $request->descricao;
+        $regra->save();
+
+
+        return redirect()->route('regras');;
+    
     }
 
     /**
@@ -64,4 +77,21 @@ class RegraController extends Controller
     {
         //
     }
+
+    public function condicoes_acoes(string $id)
+    {
+        $condicao = new Condition;
+        $acao= new Raction;
+
+        
+
+        $listacondiocoes = $condicao::where('id_regra',$id)->get();
+        $listaacoes= $acao::where('id_regra',$id)->get();
+
+        
+        
+        return view('regradetail', ['listacondicoes'=> $listacondiocoes,'listaacoes'=> $listaacoes ,'id_regra' => $id]);
+        
+    }
+
 }

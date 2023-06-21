@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('ractions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('atuador_id');
+            $table->unsignedBigInteger('id_regra');
             $table->string('descricao');
             $table->string('acao');
             $table->timestamps();
 
             $table->foreign('atuador_id')->references('id')->on('atuadores');
+            $table->foreign('id_regra')->references('id')->on('regras');
         });
     }
 
@@ -27,6 +29,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('ractions');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 };

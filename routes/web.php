@@ -9,6 +9,7 @@ use App\Http\Controllers\AtuadorController;
 use App\Http\Controllers\GatewayController;
 use App\Http\Controllers\CulturaController;
 use App\Http\Controllers\ControladorController;
+use App\Http\Controllers\RegraController;
 
 
 /*
@@ -50,7 +51,7 @@ Route::get('/login', function () {
 Route::get('/culturas', [CulturaController::class,'index']);
 
 //Controlador
-Route::post('/controlador', [ControladorController::class, 'store'])->name('createcontrolador');
+
 
 Route::get('/sensores_atuadores/{id}', [CulturaController::class,'get_sensores_atuadores']);
 
@@ -60,14 +61,14 @@ Route::get('/controladoresdetail/{id_controlador}', [ControladorController::clas
 
 Route::get('/logsSensor/{id_sensor}', [SensorController::class,'sensor_logs'])->name('logsSensor');
 
-Route::get('/regras', [RegrasController::class,'index'])->name('regras');
+Route::get('/regradetail/{id_regra}', [RegraController::class,'condicoes_acoes'])->name('regradetail');
+
+Route::get('/regras', [RegraController::class,'index'])->name('regras');
 
 Route::get('/addcultura', function () {
     return view('addcultura');
 });
-Route::get('/addsensores', function () {
-    return view('addsensores');
-})->name('addsensores');
+Route::get('/addsensore/{id_controlador}}', [SensorController::class,'create'])->name('addsensores');
 
 Route::get('/addatuadores', function () {
     return view('addatuador');
@@ -83,19 +84,24 @@ Route::get('/addControlador', function () {
 
 /*Route::get('/controladoresdetail', function () {
     return view('controladoresdetail');
-})->name('controladoresdetail');*/
+})->name('controladoresdetail');
+
 Route::get('/regras', function () {
     return view('regras');
 })->name('regras');
+
+*/
 
 Route::get('/addRegra', function () {
     return view('addRegra');
 })->name('addRegra');
 
+/*
 Route::get('/regradetail', function () {
     return view('regradetail');
 })->name('regradetail');
 
+*/
 
 Route::get('/addAtuacao', function () {
     return view('addAtuacao');
@@ -124,6 +130,12 @@ Route::get('/logsAtuador', function () {
 
 
 Route::post('cultura', [CulturaController::class, 'store']);
+
+Route::post('regra', [RegraController::class, 'store']);
+
+Route::post('/controlador', [ControladorController::class, 'store'])->name('createcontrolador');
+
+Route::post('/sensor',[SensorController::class, 'store'])->name('createsensor');
 
 Auth::routes();
 

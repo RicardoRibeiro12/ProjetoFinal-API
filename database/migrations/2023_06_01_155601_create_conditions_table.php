@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('conditions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_sensor');
+            $table->unsignedBigInteger('id_regra');
             $table->float('valor');
             $table->string('condicao');
             $table->timestamps();
 
             $table->foreign('id_sensor')->references('id')->on('sensors');
+            $table->foreign('id_regra')->references('id')->on('regras');
         });
     }
 
@@ -27,6 +29,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('conditions');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 };

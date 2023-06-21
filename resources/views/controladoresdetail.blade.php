@@ -47,14 +47,14 @@
                         </thead>
                         <tbody>
                             @foreach ($listaatuadores as $atuador)
-                            <tr onclick="window.location.href='{{ route('logsAtuador') }}'">
-                                <td>{{ $atuador->id}}</td>
+                            <tr onclick="window.location.href='{{ route('logsAtuador', [ 'id_atuador' =>  $atuador->id ]) }}'">
+                                <td>{{$atuador->id}}</td>
                                 <td>{{$atuador->id_controlador}}</td>
-                                <td>{{$controlador->type}}</td>
-                                <td>{{$controlador->descricao}}</td>
+                                <td>{{$atuador->type}}</td>
+                                <td>{{$atuador->descricao}}</td>
                             </tr>
                             @endforeach
-                            <!-- Adicione mais linhas conforme necessário -->
+                            
                         </tbody>
                     </table>
                 </div>
@@ -62,12 +62,13 @@
         </div>
         <div class="row no-horizontal-margin mt-3">
             <div class="col-md-6 text-center">
+                
                 <button class="btn btn-lg btn-cultura text-uppercase fw-bold mb-2" type="submit"
-                    onclick="window.location.href='{{ route('addsensores') }}'">+Adicionar Sensores</button>
+                    onclick="window.location.href='{{ route('addsensores', ['id_controlador' => $id_controlador ]) }}'">+Adicionar Sensores</button>
             </div>
             <div class="col-md-6 text-center">
                 <button class="btn btn-lg btn-cultura text-uppercase fw-bold mb-2" type="submit"
-                    onclick="window.location.href='{{ route('addatuadores') }}'">+Adicionar Atuador</button>
+                    onclick="window.location.href='{{ route('addatuadores', ['id_controlador' => $id_controlador ]) }}'">+Adicionar Atuador</button>
             </div>
         </div>
     </div>

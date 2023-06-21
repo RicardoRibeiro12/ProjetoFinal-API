@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('nome');
             $table->string('descricao');
             $table->timestamps();
+
+            
         });
     }
 
@@ -24,6 +26,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('regras');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 };

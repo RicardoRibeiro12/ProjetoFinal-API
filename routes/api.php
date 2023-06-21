@@ -33,6 +33,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/obsdatas', [ObsController::class, 'store']);
 Route::get('/obsdatas',[ObsController::class,'index']);
 
+//ações
+Route::post('/acoes', [AtuadorController::class, 'storeacoes']);
+//Route::get('/obsdatas',[ObsController::class,'index']);
+
 Route::post('/sensors',[SensorController::class, 'store']);
 
 

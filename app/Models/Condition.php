@@ -9,9 +9,8 @@ class Condition extends Model
 {
     use HasFactory;
 
-
-    public function regras()
+    public function Regra()
     {
-        return $this->belongsToMany(Regra::class, 'regra_condition');
+        return $this->belongsTo(Regra::class);
     }
 }
