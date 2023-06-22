@@ -10,6 +10,9 @@ use App\Http\Controllers\GatewayController;
 use App\Http\Controllers\CulturaController;
 use App\Http\Controllers\ControladorController;
 use App\Http\Controllers\RegraController;
+use App\Http\Controllers\ConditionController;
+use App\Http\Controllers\RactionController;
+
 
 
 /*
@@ -68,7 +71,12 @@ Route::get('/regras', [RegraController::class,'index'])->name('regras');
 Route::get('/addcultura', function () {
     return view('addcultura');
 });
-Route::get('/addsensore/{id_controlador}}', [SensorController::class,'create'])->name('addsensores');
+Route::get('/addsensore/{id_controlador}', [SensorController::class,'create'])->name('addsensores');
+
+Route::get('/addCondicao/{id_regra}', [ConditionController::class,'create'])->name('addCondicao');
+
+Route::get('/addAtuacao/{id_regra}',[RactionController::class,'create'])->name('addAtuacao');
+
 
 Route::get('/addatuadores', function () {
     return view('addatuador');
@@ -103,13 +111,7 @@ Route::get('/regradetail', function () {
 
 */
 
-Route::get('/addAtuacao', function () {
-    return view('addAtuacao');
-})->name('addAtuacao');
 
-Route::get('/addCondicao', function () {
-    return view('addCondicao');
-})->name('addCondicao');
 
 Route::get('/associaratuador', function () {
     return view('associarAtuador');
@@ -136,6 +138,10 @@ Route::post('regra', [RegraController::class, 'store']);
 Route::post('/controlador', [ControladorController::class, 'store'])->name('createcontrolador');
 
 Route::post('/sensor',[SensorController::class, 'store'])->name('createsensor');
+
+Route::post('/condition',[ConditionController::class, 'store'])->name('createcondition');
+
+Route::post('/action',[RactionController::class, 'store'])->name('createcondition');
 
 Auth::routes();
 

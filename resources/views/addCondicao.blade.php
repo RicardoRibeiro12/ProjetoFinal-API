@@ -4,13 +4,16 @@
 <div class="bg-container"></div>
 <div class="container">
     <h2 class="mt-5">Formulário de Adicionar Atuação</h2>
-    <form>
+    <form action="{{url('condition')}}" method="post">
+        @csrf
+        <div class="form-group mt-3">
+        <label for="atuador">Regra Associada:</label>
+        <input type="text" class="form-control" id="regra" name="id_regra" readonly value="{{$regra_id}}">
+      </div>
+
         <div class="form-group row no-horizontal-margin mt-3">
             <label for="id">ID do Sensor:</label>
-            <select class="form-control" id="id" name="id">
-                <option value="sensor1">Sensor 1</option>
-                <option value="sensor2">Sensor 2</option>
-            </select>
+            <input type="number" step="0.01" class="form-control" id="ensor" name="id_sensor" placeholder="Digite o Valor">
         </div>
         <div class="form-group row no-horizontal-margin mt-3">
             <label for="descricao">Valor:</label>

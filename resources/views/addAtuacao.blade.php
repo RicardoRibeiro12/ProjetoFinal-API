@@ -4,13 +4,15 @@
 <div class="bg-container"></div>
 <div class="container">
     <h2 class="mt-5">Formulário de Adicionar Atuação</h2>
-    <form>
+    <form action="{{url('action')}}" method="post">
+        @csrf
+        <div class="form-group mt-3">
+        <label for="atuador">Regra Associada:</label>
+        <input type="text" class="form-control" id="regra" name="id_regra" readonly value="{{$regra_id}}">
+        </div>
         <div class="form-group row no-horizontal-margin mt-3">
             <label for="id">ID do Atuador:</label>
-            <select class="form-control" id="id" name="id">
-                <option value="atuador1">Atuador 1</option>
-                <option value="atuador2">Atuador 2</option>
-            </select>
+            <input type="number" step="0.01" class="form-control" id="atuador" name="atuador_id" placeholder="Digite o Valor">
         </div>
         <div class="form-group row no-horizontal-margin mt-3">
             <label for="descricao">Descrição:</label>
@@ -24,10 +26,12 @@
                 <option value="desligar">Desligar</option>
             </select>
         </div>
-        <div class="form-group row no-horizontal-margin mt-3">
+
+       <!-- <div class="form-group row no-horizontal-margin mt-3">
             <label for="tempo">Tempo:</label>
             <input type="text" class="form-control" id="tempo" name="tempo" placeholder="Digite o tempo">
         </div>
+        -->
         <div class="form-group  no-horizontal-margin mt-3">
             <button type="submit" class="btn btn-cultura">Enviar</button>
         </div>

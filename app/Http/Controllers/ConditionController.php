@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Condition;
 
 class ConditionController extends Controller
 {
@@ -17,9 +18,10 @@ class ConditionController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(string $id)
     {
-        //
+
+        return view ('addCondicao',['regra_id' => $id ]);
     }
 
     /**
@@ -27,14 +29,27 @@ class ConditionController extends Controller
      */
     public function store(Request $request)
     {
-        $sensor = new Sensor;
+        $condition = new Condition;
    
 
-        $sensor->type = $request->type;
-        $sensor->id_controlador = $request->id_controlador;
-        $sensor->port= $request->port;
-        $sensor->descricao= $request->descricao;
-        $sensor->save();
+        $condition->id_regra = $request->id_regra;
+        $condition->id_sensor = $request->id_sensor;
+        $condition->valor= $request->valor;
+        switch ($request->condicao) {
+            case 'maior':
+                $condition->condicao = '>';
+                break;
+            case 'menor':
+                $condiiton->condicao = '<';
+                break;
+            case 'igual':
+                $condition->condicao = '==';      
+            default:
+                break;
+        }
+        $condition->save();
+
+        return redirect()->route('regradetail', [ 'id_regra' =>  $request->id_regra ]);
         
     }
 

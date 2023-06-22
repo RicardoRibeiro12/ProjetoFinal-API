@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Raction;
 
 class RactionController extends Controller
 {
@@ -17,9 +18,9 @@ class RactionController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(string $id)
     {
-        //
+        return view ('addAtuacao',['regra_id' => $id ]);
     }
 
     /**
@@ -27,15 +28,18 @@ class RactionController extends Controller
      */
     public function store(Request $request)
     {
-        $sensor = new Sensor;
-   
+       
+        $raction = new Raction;
+       
+    
+        $raction->id_regra = $request->id_regra;
+        $raction->atuador_id = $request->atuador_id;
+        $raction->descricao= $request->descricao;
+        $raction->acao=$request->acao;
 
-        $sensor->type = $request->type;
-        $sensor->id_controlador = $request->id_controlador;
-        $sensor->port= $request->port;
-        $sensor->descricao= $request->descricao;
-        $sensor->save();
-        
+        $raction->save();
+    
+            return redirect()->route('regradetail', [ 'id_regra' =>  $request->id_regra ]);
     }
 
     /**
