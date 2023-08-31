@@ -24,6 +24,12 @@
                   <!-- Adicione mais linhas conforme necessário -->
                 </tbody>
               </table>
+
+              <tr onclick="window.location.href='{{ route('logsexport', [ 'id_sensor' =>  $listalogs[0]->id_sensor ]) }}'">
+              </tr>
+
+              <button class="btn btn-lg btn-cultura text-uppercase fw-bold mb-2" type="submit"
+                    onclick="window.location.href='{{ route('logsexport', ['id_sensor' => $listalogs[0]->id_sensor ]) }}'">Exportar Logs</button>
         </div>
         </div>
 

@@ -64,6 +64,8 @@ Route::get('/controladoresdetail/{id_controlador}', [ControladorController::clas
 
 Route::get('/logsSensor/{id_sensor}', [SensorController::class,'sensor_logs'])->name('logsSensor');
 
+Route::get('/logsExport/{id_sensor}',[SensorController::class,'logs_export'])->name('logsexport');
+
 Route::get('/regradetail/{id_regra}', [RegraController::class,'condicoes_acoes'])->name('regradetail');
 
 Route::get('/regras', [RegraController::class,'index'])->name('regras');

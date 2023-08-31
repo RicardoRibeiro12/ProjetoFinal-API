@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\ObsData;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Models\Regra;
 use App\Models\Condition;
 use App\Models\Raction;
 use App\Models\Sensor;
+use App\Models\Atuadore;
+use App\Models\Controladore;
+use App\Mail\Regras;
+use PhpMqtt\Client\Facades\MQTT;
 
 class ObsController extends Controller
 {
@@ -115,8 +120,31 @@ class ObsController extends Controller
                 //mandar realizar ação associada com a regra
                 var_dump("Fazer ação");
                 var_dump($idregra);
-                $acao=Raction::where('id_regra',$idregra)->get();
-                var_dump($acao[0]->acao);
+                $acoes=Raction::where('id_regra',$idregra)->get();
+
+                foreach ($acoes as $acao){
+                    $atuador = Atuadore::where('id',$acao->atuador_id)->get();
+                    var_dump($atuador[0]->id);
+                    $controlador = Controladore::where('id',$atuador[0]->id_controlador);
+                    //return var_dump($atuador[0]->id.' '.$acao->acao);
+
+                // en
+                    //MQTT::publish($controlador->id, $autador->id.' '.$acao->acao);
+                }
+                // enviar email para user com a informação da da regra acionada
+                //$conditionsregra
+                //$idregra
+                //$acoes
+
+                /*$data = [
+                    'conditionsregra'=>$conditionsregra, 
+                    'idregra'=>$idregra, 
+                    'acoes'=>$acoes,
+                ];*/
+              
+
+                Mail::to("2191261@my.ipleiria.pt")->send(new Regras($idregra,$conditionsregra,$acoes));
+
             }
             
         }

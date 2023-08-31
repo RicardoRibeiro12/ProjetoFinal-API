@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Sensor;
 use App\Models\ObsData;
+use App\Exports\SensorLogsExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class SensorController extends Controller
@@ -81,5 +83,11 @@ class SensorController extends Controller
         $listalogs = $obsdata::where('id_sensor',$id)->get();
 
         return view('logsSensor', ['listalogs'=> $listalogs]);
+    }
+
+    public function logs_export(string $id){
+        $response= Excel::download(new SensorLogsExport($id), 'SensorLogs.xlsx');
+        ob_end_clean();
+        return  $response;
     }
 }
