@@ -53,6 +53,10 @@ Route::get('/login', function () {
 
 Route::get('/culturas', [CulturaController::class,'index']);
 
+Route::get('/associaratuador/{id_user}',[CutluraController::class,'get_sensores_user'])->name('associaratuador');
+
+Route::get('/associarsensor/{id_user}', [CulturaController::class,'get_sensores_user'])->name('get_sensor_user');
+
 //Controlador
 
 
@@ -115,13 +119,7 @@ Route::get('/regradetail', function () {
 
 
 
-Route::get('/associaratuador', function () {
-    return view('associarAtuador');
-})->name('associaratuador');
 
-Route::get('/associarsensor', function () {
-    return view('associarSensor');
-})->name('associarsensor');
 
 /*Route::get('/logsSensor', function () {
     return view('logsSensor');

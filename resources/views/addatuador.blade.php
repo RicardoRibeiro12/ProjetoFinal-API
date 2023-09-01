@@ -8,9 +8,7 @@
       <div class="form-group  mt-3">
         <label for="sensor">Tipo de Atuador:</label>
         <select id="sensor" class="form-control" name="sensor">
-          <option value="sensor1">Atuador 1</option>
-          <option value="sensor2">Atuador 2</option>
-          <option value="sensor3">Atuador 3</option>
+          <option value="sensor1">Relé</option>
           <!-- Adicione mais opções de sensor conforme necessário -->
         </select>
       </div>

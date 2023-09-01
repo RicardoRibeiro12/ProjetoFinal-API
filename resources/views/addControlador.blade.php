@@ -10,9 +10,8 @@
     <div class="form-group">
       <label for="type">Type:</label>
       <select id="type" class="form-control" name="type">
-        <option value="option1">Opção 1</option>
-        <option value="option2">Opção 2</option>
-        <option value="option3">Opção 3</option>
+        <option value="option1">Esp 8266</option>
+        
         <!-- Adicione mais opções de sensor conforme necessário -->
       </select>
     </div>
@@ -36,7 +35,7 @@
 <div class="row no-horizontal-margin mt-3">
   <div class="col-sm text-center">
     <button class="btn btn-lg btn-cultura text-uppercase fw-bold mb-2" type="submit"
-      onclick="window.location.href='{{ route('controladores') }}'">Voltar</button>
+      onclick="window.location.href='{{ route('controladores', ['id_user' => Auth::id()]) }}'">Voltar</button>
   </div>
   <div class="col-sm text-center">
   </div>

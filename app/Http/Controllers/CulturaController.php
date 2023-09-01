@@ -6,6 +6,7 @@ use App\Models\Sensor;
 use App\Models\Atuadore;
 use App\Models\Cultura;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CulturaController extends Controller
 {
@@ -109,5 +110,17 @@ class CulturaController extends Controller
        
        return view('sensores', ['lista_sensores'=> $sensores, 'lista_atuadores' =>$atuadores]);
 
+    }
+
+    public function get_sensores_user (string $id ){
+
+        $results = DB::table('sensors')
+        ->join('controladores', 'sensors.id_controlador', '=', 'controladores.id')
+        ->where('controladores.id_user', $id)
+        ->get();
+
+
+
+        return view('associarSensor', ['lista_sensores'=> $results ]);
     }
 }

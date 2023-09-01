@@ -125,24 +125,15 @@ class ObsController extends Controller
                 foreach ($acoes as $acao){
                     $atuador = Atuadore::where('id',$acao->atuador_id)->get();
                     var_dump($atuador[0]->id);
-                    $controlador = Controladore::where('id',$atuador[0]->id_controlador);
-                    //return var_dump($atuador[0]->id.' '.$acao->acao);
 
-                // en
-                    //MQTT::publish($controlador->id, $autador->id.' '.$acao->acao);
+                    $controlador = Controladore::where('id',$atuador[0]->id_controlador)->get();
+                    //return var_dump($atuador[0]->id.' '.$acao->acao);
+                    var_dump("controlador");
+                    var_dump($controlador[0]->id);
+                    //informar o controlador que tem uma ação para realizar
+                    MQTT::publish($controlador[0]->id, $atuador[0]->id.' '.$acao->acao);
                 }
                 // enviar email para user com a informação da da regra acionada
-                //$conditionsregra
-                //$idregra
-                //$acoes
-
-                /*$data = [
-                    'conditionsregra'=>$conditionsregra, 
-                    'idregra'=>$idregra, 
-                    'acoes'=>$acoes,
-                ];*/
-              
-
                 Mail::to("2191261@my.ipleiria.pt")->send(new Regras($idregra,$conditionsregra,$acoes));
 
             }

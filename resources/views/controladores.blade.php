@@ -36,7 +36,7 @@
         </div>
         <div class="fixed-bottom">
             <button class="btn btn-lg btn-Addcultura text-uppercase fw-bold mb-5 ml-5 float-end"
-             type="submit" onclick="window.location.href='{{ route('addControlador') }}'">+ Adicionar Controlador</button>
+             type="submit" onclick="window.location.href='{{ route('addControlador', ['id_user' => Auth::user()->id ]) }}'">+ Adicionar Controlador</button>
         </div>
     </div>
     @endsection

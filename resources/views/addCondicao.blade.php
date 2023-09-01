@@ -3,7 +3,7 @@
 @section('content')
 <div class="bg-container"></div>
 <div class="container">
-    <h2 class="mt-5">Formulário de Adicionar Atuação</h2>
+    <h2 class="mt-5">Formulário de Adicionar Condição</h2>
     <form action="{{url('condition')}}" method="post">
         @csrf
         <div class="form-group mt-3">
