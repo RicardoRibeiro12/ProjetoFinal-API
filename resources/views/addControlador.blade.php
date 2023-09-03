@@ -10,7 +10,7 @@
     <div class="form-group">
       <label for="type">Type:</label>
       <select id="type" class="form-control" name="type">
-        <option value="option1">Esp 8266</option>
+        <option value="esp8266">Esp 8266</option>
         
         <!-- Adicione mais opções de sensor conforme necessário -->
       </select>

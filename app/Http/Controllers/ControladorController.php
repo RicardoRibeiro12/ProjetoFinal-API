@@ -41,8 +41,10 @@ class ControladorController extends Controller
         $controlador->id_gateway = $request->id_gateway;
 
         $controlador->save();
+
+        return redirect()->route('controladores',['id_user' => $request->id_user]);
         
-        var_dump('sucesso');
+       
     }
 
 
