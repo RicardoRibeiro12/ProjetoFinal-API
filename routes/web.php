@@ -53,9 +53,9 @@ Route::get('/login', function () {
 
 Route::get('/culturas', [CulturaController::class,'index']);
 
-Route::get('/associaratuador/{id_user}',[CutluraController::class,'get_sensores_user'])->name('associaratuador');
+Route::get('/associaratuador/{id_user}',[CutluraController::class,'get_sensores_user'])->name('getassociaratuador');
 
-Route::get('/associarsensor/{id_user}', [CulturaController::class,'get_sensores_user'])->name('get_sensor_user');
+Route::get('/associarsensor/{id_user}', [CulturaController::class,'get_sensores_user'])->name('getassociarsensor');
 
 //Controlador
 
@@ -142,6 +142,11 @@ Route::post('/sensor',[SensorController::class, 'store'])->name('createsensor');
 Route::post('/condition',[ConditionController::class, 'store'])->name('createcondition');
 
 Route::post('/action',[RactionController::class, 'store'])->name('createcondition');
+
+Route::post('/associarsensor', [CulturaController::class,'associar_sensor'])->name('associarsensor');
+
+Route::post('/associaratuador', [CulturaController::class,'associar_atuador'])->name('associaratuador');
+
 
 Auth::routes();
 

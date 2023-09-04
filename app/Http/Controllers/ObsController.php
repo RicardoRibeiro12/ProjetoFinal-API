@@ -46,7 +46,7 @@ class ObsController extends Controller
         $obs->id_sensor = $request->id_sensor;
         $obs->valor= $request->valor;
         $obs->unidade_medida= $request->unidade_medida;
-        //$obs->save();
+        $obs->save();
 
         // verificar se existem regras com condições que possam ter sido afetadas pela alteração dos valores
         
@@ -62,13 +62,13 @@ class ObsController extends Controller
             // ir buscar os ids das regras onde as condições aparecem
             
             $idregras[]=$condition->id_regra;
-            var_dump('id_regra');
-            var_dump($idregras[0]);
-            
+
             
         }
 
          foreach ($idregras as $idregra) {
+             var_dump("regra:");
+             var_dump($idregra);
             //ir buscar todas as condições de uma determianda regra
             $conditionsregra = Condition::where('id_regra',$idregra)->get();
 
@@ -78,72 +78,74 @@ class ObsController extends Controller
                 $sensor=Sensor::find($condition->id_sensor);
                 $lastlog=ObsData::where('id_sensor',$sensor->id)->orderBy('created_at', 'desc')->first();;
                 
-                var_dump("condicao:");
-                var_dump($condition->condicao);
+                var_dump ($lastlog->valor);
+                var_dump ($condition->condicao);
+                var_dump($condition->valor);
+
                 switch ($condition->condicao) {
                     case '>':
-                        var_dump($lastlog->valor);
-                        var_dump($condition->valor);
+
                         if($lastlog->valor > $condition->valor){
                             $exitloop=false;
+                        }else{
+                            $exitloop=true;
                         }
                         
                         break;
                     case '<':
                         if($lastlog->valor < $condition->valor){
                             $exitloop=false;
+                        }else{
+                            $exitloop=true;
                         }
-                        
                         break;
                     case '==':
                         if($lastlog->valor == $condition->valor){
                             $exitloop=false;
+                        }else{
+                            $exitloop=true;
                         }
-                        
                         break;                 
                     default:
                         # code...
                         break;
                 }
                 
-                 var_dump($exitloop);
+                
                 if($exitloop == true){
-                    var_dump("não cumpriu regra");
+                    
                     break;
-                } 
-                var_dump('ultimo log');
+                }
+                
                 
            
             }
 
+            var_dump($exitloop);
+
             if($exitloop == false){
                 //mandar realizar ação associada com a regra
-                var_dump("Fazer ação");
-                var_dump($idregra);
+
                 $acoes=Raction::where('id_regra',$idregra)->get();
 
                 foreach ($acoes as $acao){
                     $atuador = Atuadore::where('id',$acao->atuador_id)->get();
-                    var_dump($atuador[0]->id);
+                   
 
                     $controlador = Controladore::where('id',$atuador[0]->id_controlador)->get();
                     //return var_dump($atuador[0]->id.' '.$acao->acao);
-                    var_dump("controlador");
-                    var_dump($controlador[0]->id);
+                   
                     //informar o controlador que tem uma ação para realizar
                     MQTT::publish($controlador[0]->id, $atuador[0]->id.' '.$acao->acao);
                 }
                 // enviar email para user com a informação da da regra acionada
-                Mail::to("2191261@my.ipleiria.pt")->send(new Regras($idregra,$conditionsregra,$acoes));
+                var_dump ("ia mandar email");
+                //Mail::to("2191261@my.ipleiria.pt")->send(new Regras($idregra,$conditionsregra,$acoes));
 
             }
             
         }
  
-        var_dump('id_condicao');
-        
-        
-        var_dump('sucesso');
 
     }
 

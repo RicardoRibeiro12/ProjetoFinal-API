@@ -115,12 +115,24 @@ class CulturaController extends Controller
     public function get_sensores_user (string $id ){
 
         $results = DB::table('sensors')
+        ->select('sensors.id')
         ->join('controladores', 'sensors.id_controlador', '=', 'controladores.id')
         ->where('controladores.id_user', $id)
         ->get();
-
-
-
+       
         return view('associarSensor', ['lista_sensores'=> $results ]);
+    }
+
+    public function associar_sensor(Request $request){
+        $cultura = new Cultura;
+        $cultura->addSensor($request->id_sensor,$request->id_cultura);
+        return redirect()->route('home');
+    }
+
+    public function associar_atuador(Request $request){
+        $cultura = new Cultura;
+        $cultura->addAtuador($request->id_atuador,$request->$id_cultura);
+        
+        return redirect()->route('home');
     }
 }

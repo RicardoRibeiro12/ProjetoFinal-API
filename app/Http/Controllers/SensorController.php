@@ -35,7 +35,7 @@ class SensorController extends Controller
         $sensor = new Sensor;
         
         
-        return var_dump ($request->type);
+        
         $sensor->type = $request->type;
         $sensor->id_controlador = $request->id_controlador;
         $sensor->port= 1;
