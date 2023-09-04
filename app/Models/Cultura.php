@@ -36,7 +36,7 @@ class Cultura extends Model
     }
 
     public function get_atuadores(string $id){
-        $atuadores = DB::table('atuadores_cultura')->select('id','id_cultura','id_atuador')->where('id_cultura', $id )->groupBy('id_atuador','id_cultura',)->get();
+        $atuadores = DB::table('atuadores_cultura')->select('id','id_cultura','id_atuador')->where('id_cultura', $id )->groupBy('id_atuador','id_cultura','id')->get();
 
         return $atuadores;
     }
