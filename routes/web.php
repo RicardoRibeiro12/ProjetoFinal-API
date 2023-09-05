@@ -79,14 +79,12 @@ Route::get('/addcultura', function () {
 });
 Route::get('/addsensore/{id_controlador}', [SensorController::class,'create'])->name('addsensores');
 
+Route::get('/addatuadores/{id_controlador}', [AtuadorController::class,'create'])->name('addatuadores');
+
 Route::get('/addCondicao/{id_regra}', [ConditionController::class,'create'])->name('addCondicao');
 
 Route::get('/addAtuacao/{id_regra}',[RactionController::class,'create'])->name('addAtuacao');
 
-
-Route::get('/addatuadores', function () {
-    return view('addatuador');
-})->name('addatuadores');
 
 /*Route::get('/controladores', function () {
     return view('controladores');
@@ -138,6 +136,8 @@ Route::post('regra', [RegraController::class, 'store']);
 Route::post('/controlador', [ControladorController::class, 'store'])->name('createcontrolador');
 
 Route::post('/sensor',[SensorController::class, 'store'])->name('createsensor');
+
+Route::post('/atuador',[AtuadorController::class,'store'])->name('createatuador');
 
 Route::post('/condition',[ConditionController::class, 'store'])->name('createcondition');
 

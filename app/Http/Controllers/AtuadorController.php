@@ -19,9 +19,9 @@ class AtuadorController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(string $id)
     {
-        //
+        return view ('addatuador',['controlador_id' => $id ]);
     }
 
     /**
@@ -30,7 +30,8 @@ class AtuadorController extends Controller
     public function store(Request $request)
     {
         $atuador = new Atuadore;
-   
+        
+       
 
         $atuador->type = $request->type;
         $atuador->id_controlador = $request->id_controlador;
@@ -38,10 +39,7 @@ class AtuadorController extends Controller
         $atuador->descricao= $request->descricao;
         $atuador->save();
         
-        
-            
-        
-        var_dump('sucesso');
+        return redirect()->route('controladoresdetail', [ 'id_controlador' =>  $request->id_controlador ]);
     }
 
 

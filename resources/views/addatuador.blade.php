@@ -4,23 +4,24 @@
     <div class="bg-container"></div>
     <div class="container">
         <h2 class="mt-5">Adicionar Atuador</h2>
-    <form>
+    <form  action="{{url('atuador')}}" method="post">
+      @csrf
       <div class="form-group  mt-3">
         <label for="sensor">Tipo de Atuador:</label>
-        <select id="sensor" class="form-control" name="sensor">
-          <option value="sensor1">Relé</option>
+        <select id="sensor" class="form-control" name="type">
+          <option value="rele">Relé</option>
           <!-- Adicione mais opções de sensor conforme necessário -->
         </select>
       </div>
 
       <div class="form-group mt-3">
         <label for="atuador">Controlador Associado:</label>
-        <input type="text" class="form-control" id="atuador" name="atuador" readonly value="Controlador 1">
+        <input type="text" class="form-control" id="atuador" name="id_controlador" readonly value="{{$controlador_id}}">
       </div>
 
       <div class="form-group mt-3">
         <label for="porta">Porta Ligada:</label>
-        <input type="text" class="form-control" id="porta" name="porta">
+        <input type="text" class="form-control" id="porta" name="port">
       </div>
 
       <div class="form-group mt-3">
