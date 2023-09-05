@@ -7,6 +7,8 @@ use App\Models\Atuadore;
 use App\Models\Cultura;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
+use App\Models\ObsData;
 
 class CulturaController extends Controller
 {
@@ -82,10 +84,15 @@ class CulturaController extends Controller
         
        // var_dump($id);
         $cultura = new Cultura;
-
+        $lastlogssensores= new Collection();
         $sensores = $cultura->get_sensores($id);  
         //$sensores = array();
 
+        foreach($sensores as $sensor){
+            $lastlog=ObsData::where('id_sensor',$sensor->id)->orderBy('created_at', 'desc')->first();;
+            
+            $lastlogssensores->push($lastlog);
+        }
       /*  foreach($sensoresid as $id){
                 
                 $sensor= Sensor::findOrFail($id);
@@ -108,7 +115,7 @@ class CulturaController extends Controller
             }
     */
        
-       return view('sensores', ['lista_sensores'=> $sensores, 'lista_atuadores' =>$atuadores]);
+       return view('sensores', ['lista_sensores'=> $sensores, 'lista_atuadores' =>$atuadores,'logssensores'=> $lastlogssensores]);
 
     }
 

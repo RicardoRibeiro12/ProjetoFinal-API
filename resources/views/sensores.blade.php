@@ -32,16 +32,25 @@
                 </div>
             </div>
             @else
-            @foreach ($lista_sensores as $sensor)
-            <div class="col-lg-3">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">{{$sensor->id}}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted"> &deg;</h6>
-                        <p class="card-text">Last updated: </p>
+            @php
+                $iteratorsensores = $lista_sensores->getIterator();
+                $iteratorlogs = $logssensores->getIterator();
+            @endphp
+            @foreach ($iteratorsensores as $sensor) 
+                @php
+                    $log = $iteratorlogs->current();
+                    $iteratorlogs->next();
+                @endphp    
+                <div class="col-lg-3">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">ID: {{$sensor->id}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Ultimo Valor: {{$log->valor}}{{$log->unidade_medida}}</h6>
+                            <p class="card-text">Last updated: {{$log->created_at}} </p>
+                        </div>
                     </div>
                 </div>
-            </div>
+                
             @endforeach
             @endif
             <div class="row mt-5">

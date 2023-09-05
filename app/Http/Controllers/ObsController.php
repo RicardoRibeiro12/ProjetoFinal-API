@@ -136,6 +136,7 @@ class ObsController extends Controller
                     //return var_dump($atuador[0]->id.' '.$acao->acao);
                    
                     //informar o controlador que tem uma ação para realizar
+                    var_dump($controlador[0]->id);
                     MQTT::publish($controlador[0]->id, $atuador[0]->id.' '.$acao->acao);
                 }
                 // enviar email para user com a informação da da regra acionada
