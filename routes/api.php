@@ -10,6 +10,7 @@ use App\Http\Controllers\AtuadorController;
 use App\Http\Controllers\GatewayController;
 use App\Http\Controllers\CulturaController;
 use App\Http\Controllers\ControladorController;
+use App\Http\Middleware\ApiVerification;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,29 +28,24 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-
+Route::middleware(['api-verification'])->group(function () {
+    // Define your protected routes here
+    Route::post('/obsdatas', [ObsController::class, 'store']);
+    Route::post('/acoes', [AtuadorController::class, 'storeacoes']);
+});
 // Route::put('sensor/',[SensorController::class, 'create']);
 
-Route::post('/obsdatas', [ObsController::class, 'store']);
-Route::get('/obsdatas',[ObsController::class,'index']);
+
+
 
 //ações
-Route::post('/acoes', [AtuadorController::class, 'storeacoes']);
+
 //Route::get('/obsdatas',[ObsController::class,'index']);
 
-Route::post('/sensors',[SensorController::class, 'store']);
-
-
-// User
-Route::post('/user', [UserController::class, 'store']);
-
-// Gateway
-Route::post('/gateway', [GatewayController::class, 'store']);
 
 
 
-//Cultura
-Route::post('cultura', [CulturaController::class, 'store']);
 
-//Atuadores
-Route::post('/atuadores',[AtuadorController::class, 'store']);
+
+
+

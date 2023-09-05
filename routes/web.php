@@ -141,7 +141,7 @@ Route::post('/atuador',[AtuadorController::class,'store'])->name('createatuador'
 
 Route::post('/condition',[ConditionController::class, 'store'])->name('createcondition');
 
-Route::post('/action',[RactionController::class, 'store'])->name('createcondition');
+//Route::post('/action',[RactionController::class, 'store'])->name('createcondition');
 
 Route::post('/associarsensor', [CulturaController::class,'associar_sensor'])->name('associarsensor');
 
