@@ -92,7 +92,7 @@ class CulturaController extends Controller
 
             $lastlog=ObsData::where('id_sensor',$sensor->id)->orderBy('created_at', 'desc')->first();;
             
-            $lastlogssensores->push($lastlog);
+            
 
             if($lastlog==null){
                 $lastlognew= new ObsData;
