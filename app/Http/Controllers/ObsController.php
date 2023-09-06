@@ -12,6 +12,7 @@ use App\Models\Sensor;
 use App\Models\Atuadore;
 use App\Models\Controladore;
 use App\Mail\Regras;
+use App\Models\User;
 use PhpMqtt\Client\Facades\MQTT;
 
 class ObsController extends Controller
@@ -140,8 +141,13 @@ class ObsController extends Controller
                     MQTT::publish($controlador[0]->id, $atuador[0]->id.' '.$acao->acao);
                 }
                 // enviar email para user com a informação da da regra acionada
-                var_dump ("ia mandar email");
-                //Mail::to("2191261@my.ipleiria.pt")->send(new Regras($idregra,$conditionsregra,$acoes));
+                
+                
+
+                $user= User::where('api_token',$request->api_token)->get();
+
+
+                Mail::to($user[0]->email)->send(new Regras($idregra,$conditionsregra,$acoes));
 
             }
             
