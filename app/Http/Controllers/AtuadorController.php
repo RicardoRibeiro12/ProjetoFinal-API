@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Atuadore;
 use App\Models\Action;
 use Illuminate\Http\Request;
+use PhpMqtt\Client\Facades\MQTT;
 
 class AtuadorController extends Controller
 {
@@ -83,7 +84,13 @@ class AtuadorController extends Controller
         $obs->acao= $request->acao;
         $obs->save();   
 
+    }
+
+    public function atuadoracao(Request $request){
+        $atuador = Atuadore::find($request->id_atuador);
+        MQTT::publish($atuador->id_controlador, $atuador->id.' '.$request->acao);
         
         
     }
+
 }

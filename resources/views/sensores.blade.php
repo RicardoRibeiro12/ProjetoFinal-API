@@ -66,16 +66,34 @@
                     </div>
                 </div>
                 @else
-                @foreach ($lista_atuadores as $atuador)
+                    @php
+                        $iteratoratuadores = $lista_atuadores->getIterator();
+                        $iteratoracoes = $logsatuadores->getIterator();
+                    @endphp
+                @foreach ($iteratoratuadores as $atuador)
+                    @php
+                        $acao = $iteratoracoes->current();
+                        $iteratoracoes->next();
+                    @endphp  
                 <div class="col-lg-6">
                     <div class="card mb-3">
                         <div class="card-body">
-                            <h5 class="card-title">{{$atuador->id}}</h5>
-                            <button class="btn btn-success btn-lg  text-uppercase fw-bold mb-2"
-                                type="submit">On</button>
-                            <button class="btn btn-danger btn-lg  text-uppercase fw-bold mb-2"
-                                type="submit">Off</button>
-                            <p class="card-text">Status: status </p>
+                            <h5 class="card-title">{{$atuador->id_atuador}}</h5>
+                            <form action="{{url('atuadoracao')}}" method="post">
+                                @csrf
+                                <input type="hidden" class="form-control" id="atuador" name="id_atuador" readonly value="{{$atuador->id_atuador}}">
+                                <input type="hidden" class="form-control" id="on" name="acao" readonly value="ligar">
+                                <button class="btn btn-success btn-lg  text-uppercase fw-bold mb-2"
+                                    type="submit">On</button>
+                            </form>    
+                            <form action="{{url('atuadoracao')}}" method="post">
+                                @csrf
+                                <input type="hidden" class="form-control" id="atuador" name="id_atuador" readonly value="{{$atuador->id_atuador}}">
+                                <input type="hidden" class="form-control" id="off" name="acao" readonly value="desligar">
+                                <button class="btn btn-danger btn-lg  text-uppercase fw-bold mb-2"
+                                    type="submit">Off</button>
+                            </form>
+                            <p class="card-text">Ultima Ação: {{$acao->acao}} </p>
                         </div>
                     </div>
                 </div>
@@ -100,7 +118,7 @@
                 @else
                 <button class="btn btn-lg btn-cultura text-uppercase fw-bold mb-2" type="submit"
                         onclick="window.location.href='{{ route('getassociaratuador', ['id_user' => Auth::id()]) }}'">Associar Atuador</button>
-                    @endif
+                @endif
 
             </div>
         </div>

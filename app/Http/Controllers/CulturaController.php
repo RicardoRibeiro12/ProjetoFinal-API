@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
 use App\Models\ObsData;
+use App\Models\Action;
 
 class CulturaController extends Controller
 {
@@ -82,40 +83,51 @@ class CulturaController extends Controller
 
     public function get_sensores_atuadores(string $id ){
         
-       // var_dump($id);
+    
         $cultura = new Cultura;
         $lastlogssensores= new Collection();
         $sensores = $cultura->get_sensores($id);  
-        //$sensores = array();
 
         foreach($sensores as $sensor){
+
             $lastlog=ObsData::where('id_sensor',$sensor->id)->orderBy('created_at', 'desc')->first();;
             
             $lastlogssensores->push($lastlog);
-        }
-      /*  foreach($sensoresid as $id){
-                
-                $sensor= Sensor::findOrFail($id);
 
-                $sensores[] = $sensor;
-                
-        }*/
-        
-        //var_dump($sensores);    
+            if($lastlog==null){
+                $lastlognew= new ObsData;
+                $lastlognew->id_sensor= $sensor->id;
+                $lastlognew->valor= "";
 
-        $atuadores= $cultura->get_atuadores($id);
-        //$atuadores= array();
-
-        /*foreach($atuadoresid as $id){
-                
-            $atuador= Atuadore::findOrFail($id);
-
-            $atuadores[]=$atuador;
-            
+                $lastlogssensores->push($lastlognew);
+            }else{
+                $lastlogssensores->push($lastlog);
             }
-    */
+        }
+
+        $lastlogsatuadores= new Collection();
+        $atuadores= $cultura->get_atuadores($id);
+
+        foreach($atuadores as $atuador){
+            
+            
+            $lastlog=Action::where('atuador_id',$atuador->id_atuador)->orderBy('created_at', 'desc')->first();;
+            if($lastlog==null){
+                $lastlognew= new Action;
+                $lastlognew->atuador_id= $atuador->id;
+                $lastlognew->acao= "";
+
+                $lastlogsatuadores->push($lastlognew);
+            }else{
+                $lastlogsatuadores->push($lastlog);
+            }
+            //return var_dump($lastlog->acao);
+
+            
+        }
+
        
-       return view('sensores', ['lista_sensores'=> $sensores, 'lista_atuadores' =>$atuadores,'logssensores'=> $lastlogssensores]);
+       return view('sensores', ['lista_sensores'=> $sensores, 'lista_atuadores' =>$atuadores,'logssensores'=> $lastlogssensores, 'logsatuadores'=>$lastlogsatuadores]);
 
     }
 
@@ -130,6 +142,16 @@ class CulturaController extends Controller
         return view('associarSensor', ['lista_sensores'=> $results ]);
     }
 
+    public function get_atuadores_user(string $id){
+        $results = DB::table('atuadores')
+        ->select('atuadores.id')
+        ->join('controladores', 'atuadores.id_controlador', '=', 'controladores.id')
+        ->where('controladores.id_user', $id)
+        ->get();
+       
+        return view('associarAtuador', ['lista_atuadores'=> $results ]);
+    }
+
     public function associar_sensor(Request $request){
         $cultura = new Cultura;
         $cultura->addSensor($request->id_sensor,$request->id_cultura);
@@ -138,7 +160,7 @@ class CulturaController extends Controller
 
     public function associar_atuador(Request $request){
         $cultura = new Cultura;
-        $cultura->addAtuador($request->id_atuador,$request->$id_cultura);
+        $cultura->addAtuador($request->id_atuador,$request->id_cultura);
         
         return redirect()->route('home');
     }

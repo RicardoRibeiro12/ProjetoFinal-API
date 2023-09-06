@@ -19,6 +19,13 @@
         <label for="atuador">Cultura:</label>
         <input type="text" class="form-control" id="atuador" name="id_cultura" readonly value="1">
       </div>
+
+    <!--  <div class="form-group mt-3">
+        <label for="porta">Porta Ligada:</label>
+        <input type="text" class="form-control" id="porta" name="porta">
+      </div>
+    -->
+
       <button type="submit" class="btn btn-cultura mt-3">Associar Sensor</button>
     </form>
   </div>
