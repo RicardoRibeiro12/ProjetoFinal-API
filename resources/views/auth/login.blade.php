@@ -59,7 +59,7 @@
 												<input class="form-check-input me-2" type="checkbox"name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} style="margin-left:-0.7rem;!important">
 												<label class="form-check-label" for="remember">Guardar Sessão</label>
 											</div>
-											<div class="text-end">
+											<!--<div class="text-end">
 												<h6 class="small mb-0">
                                                     @if (Route::has('password.request'))
                                         <a class="small btn btn-link" href="{{ route('password.request') }}">
@@ -67,7 +67,7 @@
                                         </a>
                                     @endif
                                                     </h6>
-											</div>
+											</div>-->
 										</div>
 									</div>
 									<div class="d-grid">

@@ -31,7 +31,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware(['api-verification'])->group(function () {
     // Define your protected routes here
     Route::post('/obsdatas', [ObsController::class, 'store']);
-    Route::post('/acoes', [AtuadorController::class, 'storeacoes']);
+    Route::post('/actions', [AtuadorController::class, 'storeacoes']);
 });
 // Route::put('sensor/',[SensorController::class, 'create']);
 

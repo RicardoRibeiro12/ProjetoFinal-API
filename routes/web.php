@@ -85,6 +85,7 @@ Route::get('/addCondicao/{id_regra}', [ConditionController::class,'create'])->na
 
 Route::get('/addAtuacao/{id_regra}',[RactionController::class,'create'])->name('addAtuacao');
 
+Route::get('/viewdetail/{id_user}',[UserCOntroller::class,'get_details'])->name('userdetail');
 
 /*Route::get('/controladores', function () {
     return view('controladores');
