@@ -44,7 +44,7 @@
                 <div class="col-lg-3">
                     <div class="card mb-3">
                         <div class="card-body">
-                            <h5 class="card-title">ID: {{$sensor->id}}</h5>
+                            <h5 class="card-title">ID: {{$sensor->sensor_id}}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Ultimo Valor: {{$log->valor}}{{$log->unidade_medida}}</h6>
                             <p class="card-text">Last updated: {{$log->created_at}} </p>
                         </div>
