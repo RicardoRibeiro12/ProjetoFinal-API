@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('actions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('atuador_id');
-            $table->string('acao');
             $table->timestamps();
 
             $table->foreign('atuador_id')->references('id')->on('atuadores');
