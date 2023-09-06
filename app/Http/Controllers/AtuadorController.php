@@ -76,11 +76,14 @@ class AtuadorController extends Controller
     }
 
     public function storeacoes(Request $request){
-
+        
+        var_dump($request->acao);
         $obs = new Action;
-        $obs->id_sensor = $request->id_sensor;
-        $obs->valor= $request->valor;
-        $obs->tempo= $request->unidade_medida;
-        $obs->save();
+        $obs->atuador_id = $request->id_atuador;
+        $obs->acao= $request->acao;
+        $obs->save();   
+
+        
+        
     }
 }

@@ -69,4 +69,13 @@ class UserController extends Controller
     {
         //
     }
+
+    public function get_details(string $id){
+        $user = new User;
+
+        $userdetails = $user::where('id',$id)->get();
+
+        return view('userdetail', ['userdetails'=> $userdetails]);
+
+    }
 }
