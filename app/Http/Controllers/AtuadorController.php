@@ -86,9 +86,20 @@ class AtuadorController extends Controller
 
     }
 
+    public function acoes_logs(string $id){
+        $acoes = new Action;
+
+        $listaacoes = $acoes::where('atuador_id',$id)->get();
+
+        return view('logsAtuador', ['listaacoes'=> $listaacoes]);
+    }
+
     public function atuadoracao(Request $request){
         $atuador = Atuadore::find($request->id_atuador);
+        
         MQTT::publish($atuador->id_controlador, $atuador->id.' '.$request->acao);
+        
+        return redirect()->route('sensores_atuadores', [ 'id' =>  $request->id_cultura]);
         
         
     }

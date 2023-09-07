@@ -47,7 +47,7 @@
                         </thead>
                         <tbody>
                             @foreach ($listaatuadores as $atuador)
-                            <tr onclick="window.location.href='{{ route('logsAtuador', [ 'id_atuador' =>  $atuador->id ]) }}'">
+                            <tr onclick="window.location.href='{{ route('acoesAtuador', [ 'id_atuador' =>  $atuador->id ]) }}'">
                                 <td>{{$atuador->id}}</td>
                                 <td>{{$atuador->id_controlador}}</td>
                                 <td>{{$atuador->type}}</td>

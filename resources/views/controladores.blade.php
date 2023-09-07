@@ -22,14 +22,8 @@
                     <td>{{$controlador->type}}</td>
                     <td>{{$controlador->Ip}}</td>
                     <td>{{$controlador->id_gateway}}</td>
-                    <td>
-                      <button class="btn btn-warning btn-sm" title="Editar">Editar</button>
-                      <button class="btn btn-danger btn-sm" title="Excluir">Eliminar</button>
-                    </td>
-                  
-
                   </tr>
-                  @endforeach
+                @endforeach
                 </tbody>
               </table>
         </div>

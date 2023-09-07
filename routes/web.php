@@ -36,19 +36,6 @@ Route::get('/', function () {
 
 Route::get('/', [CulturaController::class,'index'])->name('home')->middleware('auth');
 
-/*
-Route::get('/home', function () {
-    return view('culturas.index');
-})->name('home')->middleware('auth');
-*/
-
-
-/*
-Route::get('/login', function () {
-    return view('login');
-});*/
-
-
 
 
 Route::get('/culturas', [CulturaController::class,'index']);
@@ -57,10 +44,10 @@ Route::get('/associaratuador/{id_user}',[CulturaController::class,'get_atuadores
 
 Route::get('/associarsensor/{id_user}', [CulturaController::class,'get_sensores_user'])->name('getassociarsensor');
 
-//Controlador
 
 
-Route::get('/sensores_atuadores/{id}', [CulturaController::class,'get_sensores_atuadores']);
+
+Route::get('/sensores_atuadores/{id}', [CulturaController::class,'get_sensores_atuadores'])->name('sensores_atuadores');
 
 Route::get('/controladores/{id_user}', [ControladorController::class,'index'])->name('controladores');
 
@@ -69,6 +56,8 @@ Route::get('/controladoresdetail/{id_controlador}', [ControladorController::clas
 Route::get('/logsSensor/{id_sensor}', [SensorController::class,'sensor_logs'])->name('logsSensor');
 
 Route::get('/logsExport/{id_sensor}',[SensorController::class,'logs_export'])->name('logsexport');
+
+Route::get('/logsAtuador{id_atuador}',[AtuadorController::class,'acoes_logs'])->name('acoesAtuador');
 
 Route::get('/regradetail/{id_regra}', [RegraController::class,'condicoes_acoes'])->name('regradetail');
 
@@ -87,46 +76,16 @@ Route::get('/addAtuacao/{id_regra}',[RactionController::class,'create'])->name('
 
 Route::get('/viewdetail/{id_user}',[UserCOntroller::class,'get_details'])->name('userdetail');
 
-/*Route::get('/controladores', function () {
-    return view('controladores');
-})->name('controladores');
-*/
+
 Route::get('/addControlador', function () {
     return view('addControlador');
 })->name('addControlador');
 
-/*Route::get('/controladoresdetail', function () {
-    return view('controladoresdetail');
-})->name('controladoresdetail');
 
-Route::get('/regras', function () {
-    return view('regras');
-})->name('regras');
-
-*/
 
 Route::get('/addRegra', function () {
     return view('addRegra');
 })->name('addRegra');
-
-/*
-Route::get('/regradetail', function () {
-    return view('regradetail');
-})->name('regradetail');
-
-*/
-
-
-
-
-
-/*Route::get('/logsSensor', function () {
-    return view('logsSensor');
-})->name('logsSensor');
-*/
-Route::get('/logsAtuador', function () {
-    return view('logsAtuador');
-})->name('logsAtuador');
 
 
 
@@ -144,7 +103,7 @@ Route::post('/atuadoracao',[AtuadorController::class,'atuadoracao'])->name('atua
 
 Route::post('/condition',[ConditionController::class, 'store'])->name('createcondition');
 
-//Route::post('/action',[RactionController::class, 'store'])->name('createcondition');
+Route::post('/action',[RactionController::class, 'store'])->name('createcondition');
 
 Route::post('/associarsensor', [CulturaController::class,'associar_sensor'])->name('associarsensor');
 

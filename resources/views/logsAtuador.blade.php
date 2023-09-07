@@ -4,7 +4,7 @@
     <div class="bg-container"></div>
     <div class="container">
         <div class="container-fluid">
-            <h3 class="text-center mt-3">Atuador Rele Logs</h3>
+            <h3 class="text-center mt-3">Atuador Logs</h3>
             <table class="table table-light table-hover mt-3">
                 <thead class="thead-dark">
                   <tr>
@@ -14,7 +14,11 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>Ligou</td>
+                  @foreach ($listaacoes as $acao )
+                    <td>{{$acao->acao}}</td>
+                    <td>{{$acao->created_at}}</td>
+                  @endforeach
+
                   </tr>
                 </tbody>
               </table>

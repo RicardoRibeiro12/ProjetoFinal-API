@@ -39,7 +39,7 @@ class RactionController extends Controller
 
         $raction->save();
     
-            return redirect()->route('regradetail', [ 'id_regra' =>  $request->id_regra ]);
+        return redirect()->route('regradetail', [ 'id_regra' =>  $request->id_regra ]);
     }
 
     /**

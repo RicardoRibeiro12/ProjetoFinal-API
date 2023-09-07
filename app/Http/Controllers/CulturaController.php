@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
 use App\Models\ObsData;
 use App\Models\Action;
+use Illuminate\Support\Facades\Auth;
 
 class CulturaController extends Controller
 {
@@ -18,8 +19,9 @@ class CulturaController extends Controller
      */
     public function index()
     {
-        $cultura = new Cultura;
-        $listaculturas = $cultura::all();
+        $user = Auth::user();
+        
+        $listaculturas = Cultura::where('id_user',$user->id)->get();
 
         return view('culturas', ['listaculturas'=> $listaculturas]);
     }
@@ -90,7 +92,7 @@ class CulturaController extends Controller
 
         foreach($sensores as $sensor){
 
-            $lastlog=ObsData::where('id_sensor',$sensor->id)->orderBy('created_at', 'desc')->first();;
+            $lastlog=ObsData::where('id_sensor',$sensor->sensor_id)->orderBy('created_at', 'desc')->first();;
             
             
 
@@ -111,7 +113,7 @@ class CulturaController extends Controller
         foreach($atuadores as $atuador){
             
             
-            $lastlog=Action::where('atuador_id',$atuador->id_atuador)->orderBy('created_at', 'desc')->first();;
+            $lastlog=Action::where('atuador_id',$atuador->id_atuador)->orderBy('created_at', 'desc')->first();
             if($lastlog==null){
                 $lastlognew= new Action;
                 $lastlognew->atuador_id= $atuador->id;
@@ -127,7 +129,7 @@ class CulturaController extends Controller
         }
 
        
-       return view('sensores', ['lista_sensores'=> $sensores, 'lista_atuadores' =>$atuadores,'logssensores'=> $lastlogssensores, 'logsatuadores'=>$lastlogsatuadores]);
+       return view('sensores', ['lista_sensores'=> $sensores, 'lista_atuadores' =>$atuadores,'logssensores'=> $lastlogssensores, 'logsatuadores'=>$lastlogsatuadores ,'id_cultura'=>$id]);
 
     }
 

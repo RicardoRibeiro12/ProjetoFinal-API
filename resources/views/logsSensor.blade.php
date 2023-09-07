@@ -4,7 +4,7 @@
     <div class="bg-container"></div>
     <div class="container">
         <div class="container-fluid">
-            <h3 class="text-center mt-3">Sensor DHT11 Logs</h3>
+            <h3 class="text-center mt-3">Sensor Logs</h3>
             <table class="table table-light table-hover mt-3">
                 <thead class="thead-dark">
                   <tr>
@@ -24,12 +24,11 @@
                   <!-- Adicione mais linhas conforme necessário -->
                 </tbody>
               </table>
-
-              <tr onclick="window.location.href='{{ route('logsexport', [ 'id_sensor' =>  $listalogs[0]->id_sensor ]) }}'">
-              </tr>
-
+              
+              @if(count($listalogs) != 0)
               <button class="btn btn-lg btn-cultura text-uppercase fw-bold mb-2" type="submit"
                     onclick="window.location.href='{{ route('logsexport', ['id_sensor' => $listalogs[0]->id_sensor ]) }}'">Exportar Logs</button>
+              @endif
         </div>
         </div>
 

@@ -46,7 +46,7 @@
                             <th>ID Atuador</th>
                             <th>Descrição</th>
                             <th>Ação</th>
-                            <th>Tempo</th>
+                            
                         </tr>
                     </thead>
                     <tbody>

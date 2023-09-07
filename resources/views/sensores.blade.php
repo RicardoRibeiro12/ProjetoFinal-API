@@ -83,6 +83,7 @@
                                 @csrf
                                 <input type="hidden" class="form-control" id="atuador" name="id_atuador" readonly value="{{$atuador->id_atuador}}">
                                 <input type="hidden" class="form-control" id="on" name="acao" readonly value="ligar">
+                                <input type="hidden" class="form-control" id="cultura" name="id_cultura" value="{{$id_cultura}}">
                                 <button class="btn btn-success btn-lg  text-uppercase fw-bold mb-2"
                                     type="submit">On</button>
                             </form>    
@@ -90,6 +91,7 @@
                                 @csrf
                                 <input type="hidden" class="form-control" id="atuador" name="id_atuador" readonly value="{{$atuador->id_atuador}}">
                                 <input type="hidden" class="form-control" id="off" name="acao" readonly value="desligar">
+                                <input type="hidden" class="form-control" id="cultura" name="id_cultura" value="{{$id_cultura}}">
                                 <button class="btn btn-danger btn-lg  text-uppercase fw-bold mb-2"
                                     type="submit">Off</button>
                             </form>
