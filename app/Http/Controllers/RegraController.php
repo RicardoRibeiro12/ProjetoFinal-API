@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Regra;
 use App\Models\Condition;
 use App\Models\Raction;
+use Illuminate\Support\Facades\Auth;
 
 class RegraController extends Controller
 {
@@ -14,8 +15,11 @@ class RegraController extends Controller
      */
     public function index()
     {
-        $regra = new Regra;
-        $listaregras = $regra::all();
+
+        $user = Auth::user();
+
+        
+        $listaregras = Regra::where('id_user',$user->id)->get();;
 
         return view('regras', ['listaregras'=> $listaregras]);
     }
@@ -35,8 +39,9 @@ class RegraController extends Controller
     {
         
         $regra = new Regra;
+        $user = Auth::user();
 
-
+        $regra->id_user=$user->id;
         $regra->nome = $request->nome;
         $regra->descricao= $request->descricao;
         $regra->save();
